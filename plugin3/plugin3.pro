@@ -6,7 +6,7 @@ TARGET = plugin3
 
 INCLUDEPATH = ../pluginInterface
 
-RESOURCES = resources.qrc
+RESOURCES = resources3.qrc
 
 HEADERS = plugin.h ../pluginInterface/plugin_if.h
 

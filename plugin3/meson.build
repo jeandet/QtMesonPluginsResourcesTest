@@ -1,4 +1,4 @@
-
+qt5 = import('qt5')
 
 moc_gen = generator(moc,
                 output  : 'moc_@BASENAME@.cpp',
@@ -15,7 +15,9 @@ rcc_gen = generator(rcc,
                  '@INPUT@'])
 
 
-resource_files = rcc_gen.process(qresources:'resources.qrc')
+#resource_files = rcc_gen.process(qresources:'resources3.qrc')
+resource_files = qt5.preprocess(qresources:'resources3.qrc')
+
 
 moc_files = moc_gen.process('plugin.h')
 
@@ -23,7 +25,7 @@ plugin1 = library('plugin3',
                        ['plugin.cpp'],
                        moc_files,
                        resource_files,
-                       cpp_flags : '-DQT_PLUGIN',
+                       cpp_args : '-DQT_PLUGIN',
                        include_directories : [plugin_interface_inc],
                        dependencies : [qt5core],
                        install : true

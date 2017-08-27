@@ -1,4 +1,4 @@
-
+qt5 = import('qt5')
 
 moc_gen = generator(moc,
                 output  : 'moc_@BASENAME@.cpp',
@@ -13,7 +13,8 @@ rcc_gen = generator(rcc,
                  '@OUTPUT@',
                  '@INPUT@'])
 
-resource_files = rcc_gen.process('resources.qrc')
+#resource_files = rcc_gen.process('resources1.qrc')
+resource_files = qt5.preprocess(qresources:'resources1.qrc')
 
 moc_files = moc_gen.process('plugin.h')
 
